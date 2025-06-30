@@ -3,7 +3,6 @@ from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
 from .permissions import IsAuthorOrReadOnly
 
-# Список и создание постов
 class PostListCreateView(generics.ListCreateAPIView):
     queryset = Post.objects.filter(is_published=True)
     serializer_class = PostSerializer
@@ -15,14 +14,14 @@ class PostListCreateView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+        
 
-# Детали, обновление, удаление поста
 class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsAuthorOrReadOnly]
 
-# Список комментариев по посту
+
 class CommentListView(generics.ListAPIView):
     serializer_class = CommentSerializer
 

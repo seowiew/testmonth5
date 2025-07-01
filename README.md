@@ -5,7 +5,7 @@ rest api проект для блога
 без докера:
 клонировать этот репозиторий + python manage.py runserver
 с докером;
-клонировать + docker-compose up --build
+клонировать + docker-compose up 
 будет доступен на http://localhost:8000/api/v1/.../
 
 аутентификация:
